@@ -1,3 +1,4 @@
+
 body {
     background-color: white;
     margin: 0px;
@@ -22,8 +23,14 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 50px;
+    padding: 30px;
     height: 300px;
+}
+
+.infoInputArea {
+    background-color: #79aef2;
+    padding: 25px;
+    border-radius: 20px;
 }
 
 .form {
@@ -35,10 +42,13 @@ body {
     font-size: 15px;
     color: black;
 }
-
+.info {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
 #submit {
     margin-top: 20px;
-    background-color: #1AA4E8;
+    background-color: #1072A3;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-radius: 10px;
