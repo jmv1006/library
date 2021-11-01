@@ -2,6 +2,7 @@ let titleInput;
 let authorInput;
 let pageInput;
 let newBook;
+const bookDisplay = document.getElementById('bookDisplayArea');
 let myLibrary = [];
 
 function saveInputs() {
@@ -30,20 +31,27 @@ newBook.info();
 function assignInputsToBook() {
     newBook = new Book(titleInput, authorInput, pageInput);
     addBookToLibrary();
-}
+};
 
 
 //this sends the new book to the myLibrary array
 function addBookToLibrary() {
     myLibrary.push(newBook);
+    displayBookInLibrary();
     clear();
-}
+};
 
 function clear() {
     document.getElementById('titleInput').value = '';
     document.getElementById('authorInput').value = '';
     document.getElementById('pageInput').value = '';
-}
+};
 
 //To display different books, I will classify them by their array numbers.
 //for example, I will use myLibrary[0] to display the first book and so on.
+//I will create a div every time a book is added, similar to the grid project!
+
+function displayBookInLibrary() {
+    const createBookCard = document.createElement('div');
+    bookDisplay.appendChild(createBookCard).className = 'bookCards';
+}
