@@ -1,16 +1,15 @@
-let title;
-let author;
 let titleInput;
 let authorInput;
-let newBook
+let pageInput;
+let newBook;
+let myLibrary = [];
 
 function saveInputs() {
     titleInput = document.getElementById('titleInput').value;
     authorInput = document.getElementById('authorInput').value;
+    pageInput = document.getElementById('pageInput').value;
     assignInputsToBook();
 };
-
-let myLibrary = [];
 
 function Book(title, author, pages) {
     this.title = title
@@ -29,7 +28,7 @@ newBook.info();
 */
 
 function assignInputsToBook() {
-    newBook = new Book(titleInput, authorInput, 532);
+    newBook = new Book(titleInput, authorInput, pageInput);
     addBookToLibrary();
 }
 
@@ -39,4 +38,5 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
 }
 
-
+//To display different books, I will classify them by their array numbers.
+//for example, I will use myLibrary[0] to display the first book and so on.
