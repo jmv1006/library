@@ -71,7 +71,7 @@ body {
     padding: 15px;
 }
 
-.bookCards {
+#bookCards {
     background-image: linear-gradient(to bottom right, #1072A3, #8eb8e6);
     padding: 10px;
     display: flex;
