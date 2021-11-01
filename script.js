@@ -2,6 +2,8 @@ let titleInput;
 let authorInput;
 let pageInput;
 let newBook;
+let createBookCard;
+let card;
 const bookDisplay = document.getElementById('bookDisplayArea');
 let myLibrary = [];
 
@@ -20,6 +22,14 @@ function Book(title, author, pages) {
         console.log(`${title} by ${author} is ${pages} pages long.`)
     }
 };
+
+//These are just adding sample books to myLibrary array
+const book1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 152);
+const book2 = new Book('Moby Dick', 'Herman Melville', 427);
+const book3 = new Book('The Art of War', 'Sun Tzu', 288);
+myLibrary.push(book1);
+myLibrary.push(book2);
+myLibrary.push(book2);
 
 //link title, author, and page number to user input. Ex,
 // newBook = new Book('userTitleInput', 'userAuthorInput', 'userPageNumInput');
@@ -52,6 +62,12 @@ function clear() {
 //I will create a div every time a book is added, similar to the grid project!
 
 function displayBookInLibrary() {
-    const createBookCard = document.createElement('div');
+    createBookCard = document.createElement('div');
+    bookInfo = document.createElement('div');
     bookDisplay.appendChild(createBookCard).className = 'bookCards';
+}
+
+//function that loops over array and displays books on page
+function displayBookOnPage() {
+
 }
