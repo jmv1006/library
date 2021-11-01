@@ -2,8 +2,6 @@ let titleInput;
 let authorInput;
 let pageInput;
 let newBook;
-let createBookCard;
-let card;
 const bookDisplay = document.getElementById('bookDisplayArea');
 let bookCards = document.getElementById('bookCards');
 let myLibrary = [];
@@ -70,10 +68,9 @@ function createCards() {
     createBookCard = document.createElement('div');
     bookInfo = document.createElement('div');
     bookDisplay.appendChild(createBookCard).id = 'bookCards';
-    bookDisplay.appendChild(createBookCard).innerHTML = 'Hi';
+    bookDisplay.appendChild(createBookCard).innerHTML = 'Book info goes here';
 }
 
-//function that loops over array and displays books on page
 
 
 displayBookOnPage();
