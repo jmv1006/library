@@ -36,6 +36,13 @@ function assignInputsToBook() {
 //this sends the new book to the myLibrary array
 function addBookToLibrary() {
     myLibrary.push(newBook);
+    clear();
+}
+
+function clear() {
+    document.getElementById('titleInput').value = '';
+    document.getElementById('authorInput').value = '';
+    document.getElementById('pageInput').value = '';
 }
 
 //To display different books, I will classify them by their array numbers.
