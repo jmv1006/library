@@ -2,7 +2,6 @@ let titleInput;
 let authorInput;
 let pageInput;
 let newBook;
-let deleteButton;
 const bookDisplay = document.getElementById('bookDisplayArea');
 let bookCards = document.getElementById('bookCards');
 let myLibrary = [];
@@ -71,14 +70,15 @@ function createCards() {
     bookDisplay.appendChild(createBookCard).id = 'bookCards';
     bookDisplay.appendChild(createBookCard).innerHTML = `${newBook.title} by ${newBook.author}, ${newBook.pages} pages long.`;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = 'deleteButton';
-    bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X'
-    deleteCard();
+    bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
+    deleteCards();
 }
 
-function deleteCard() {
-    deleteButton = document.getElementById('deleteButton');
-    deleteButton.addEventListener('click', function() {
-        console.log('clicked delete')
-    });
+function deleteCards() {
+    document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('delete');
+            });
+        });
 };
 
