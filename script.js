@@ -6,6 +6,7 @@ const bookDisplay = document.getElementById('bookDisplayArea');
 let bookCards = document.getElementById('bookCards');
 let myLibrary = [];
 
+//transfers user input from DOM
 function saveInputs() {
     titleInput = document.getElementById('titleInput').value;
     authorInput = document.getElementById('authorInput').value;
@@ -13,6 +14,7 @@ function saveInputs() {
     assignInputsToBook();
 };
 
+//Object constructor
 function Book(title, author, pages) {
     this.title = title
     this.author = author
@@ -27,28 +29,24 @@ myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
 
-
-//link title, author, and page number to user input. Ex,
-// newBook = new Book('userTitleInput', 'userAuthorInput', 'userPageNumInput');
-/*
-let newBook = new Book('The Great Gatsby', 'J Fitzgerald', 532);
-newBook.info();
-*/
-
 //this creates the cards for each array item
 function displayBookOnPage(title, author, pages) {
-    myLibrary.forEach(function(item, index, array) {
+    if (myLibrary.length > 3) {
         createCards();
-      })
+    } else {
+        myLibrary.forEach(function(item, index, array) {
+            createCards();
+          })
+    }
 }
 
+//this assigns user inputs to the newBook variable
 function assignInputsToBook() {
     newBook = new Book(titleInput, authorInput, pageInput);
     addBookToLibrary();
 };
 
-
-//this sends the new book to the myLibrary array
+//this sends the new book to the myLibrary array 
 function addBookToLibrary() {
     myLibrary.push(newBook);
     displayBookOnPage();
@@ -68,10 +66,7 @@ function createCards() {
     createBookCard = document.createElement('div');
     bookInfo = document.createElement('div');
     bookDisplay.appendChild(createBookCard).id = 'bookCards';
-    bookDisplay.appendChild(createBookCard).innerHTML = 'Book info goes here';
+    bookDisplay.appendChild(createBookCard).innerHTML = 'Book Info';
 }
 
-
-
 displayBookOnPage();
-
