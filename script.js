@@ -5,6 +5,7 @@ let newBook;
 const bookDisplay = document.getElementById('bookDisplayArea');
 let bookCards = document.getElementById('bookCards');
 let myLibrary = [];
+let index = -1;
 
 //transfers user input from DOM
 function saveInputs() {
@@ -21,23 +22,9 @@ function Book(title, author, pages) {
     this.pages = pages
 };
 
-//These are just adding sample books to myLibrary array
-const book1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 152);
-const book2 = new Book('Moby Dick', 'Herman Melville', 427);
-const book3 = new Book('The Art of War', 'Sun Tzu', 288);
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
-
 //this creates the cards for each array item
 function displayBookOnPage(title, author, pages) {
-    if (myLibrary.length > 3) {
-        createCards();
-    } else {
-        myLibrary.forEach(function(item, index, array) {
-            createCards();
-          })
-    }
+    createCards();
 };
 
 
@@ -63,22 +50,25 @@ function clear() {
 //To display different books, I will classify them by their array numbers.
 //for example, I will use myLibrary[0] to display the first book and so on.
 //I will create a div every time a book is added, similar to the grid project!
+
 function createCards() {
+    index++;
     createBookCard = document.createElement('div');
     createButton = document.createElement('button');
     bookInfo = document.createElement('div');
-    bookDisplay.appendChild(createBookCard).id = 'bookCards';
+    bookDisplay.appendChild(createBookCard).setAttribute("data-main", index);
+    bookDisplay.appendChild(createBookCard).classList.add('bookCards');
     bookDisplay.appendChild(createBookCard).innerHTML = `${newBook.title} by ${newBook.author}, ${newBook.pages} pages long.`;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = 'deleteButton';
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
+
     deleteCards();
 }
 
 function deleteCards() {
     document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
-                console.log('delete');
+                //console.log(myLibrary[1]);
             });
         });
 };
-

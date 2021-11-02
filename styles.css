@@ -76,7 +76,7 @@ body {
     padding: 15px;
 }
 
-#bookCards {
+.bookCards {
     background-image: linear-gradient(to bottom right, #1072A3, #8eb8e6);
     padding: 20px;
     color: white;
@@ -87,7 +87,7 @@ body {
 }
 
 #deleteButton {
-    background-color: wheat;
+    background-color: #1072A3;
     color: white;
 }
 
