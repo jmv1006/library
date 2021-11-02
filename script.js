@@ -38,7 +38,7 @@ function displayBookOnPage(title, author, pages) {
             createCards();
           })
     }
-}
+};
 
 //this assigns user inputs to the newBook variable
 function assignInputsToBook() {
@@ -66,7 +66,7 @@ function createCards() {
     createBookCard = document.createElement('div');
     bookInfo = document.createElement('div');
     bookDisplay.appendChild(createBookCard).id = 'bookCards';
-    bookDisplay.appendChild(createBookCard).innerHTML = 'Book Info';
+    bookDisplay.appendChild(createBookCard).innerHTML = `${newBook.title}, ${newBook.author}, ${newBook.pages}`;
 }
 
-displayBookOnPage();
+//displayBookOnPage();
