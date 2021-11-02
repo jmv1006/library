@@ -24,9 +24,20 @@ function Book(title, author, pages) {
 
 //this creates the cards for each array item
 function displayBookOnPage(title, author, pages) {
-    createCards();
+    if (myLibrary.length > 0) {
+        clearPage();
+        myLibrary.forEach(function() {
+            createCards();
+        });
+    } else {
+        myLibrary.forEach(function() {
+            createCards();
+            console.log('else');
+        });
+    };
 };
 
+displayBookOnPage();
 
 //this assigns user inputs to the newBook variable
 function assignInputsToBook() {
@@ -47,12 +58,16 @@ function clear() {
     document.getElementById('pageInput').value = '';
 };
 
+function clearPage() {
+    const container = document.getElementById('bookDisplayArea');
+    container.innerHTML = '';
+}
+
 //To display different books, I will classify them by their array numbers.
 //for example, I will use myLibrary[0] to display the first book and so on.
 //I will create a div every time a book is added, similar to the grid project!
 
 function createCards() {
-    index++;
     createBookCard = document.createElement('div');
     createButton = document.createElement('button');
     bookInfo = document.createElement('div');
