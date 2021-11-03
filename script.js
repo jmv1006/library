@@ -33,14 +33,16 @@ function assignInputsToBook() {
 //swqsqaswq
 function displayBookOnPage(title, author, pages) {
     index++;
-    clearPage();
     //creates a card for each book
     for(let i=0; i < myLibrary.length; i++) {
         console.log(i);
+        if(i < myLibrary.length && myLibrary.length - i == 1)
         createCard();
+        continue;
     };
 };
 //clear stuff
+
 function clear() {
     document.getElementById('titleInput').value = '';
     document.getElementById('authorInput').value = '';
