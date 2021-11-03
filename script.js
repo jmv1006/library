@@ -22,22 +22,11 @@ function Book(title, author, pages) {
     this.pages = pages
 };
 
-//this creates the cards for each array item
+//swqsqaswq
 function displayBookOnPage(title, author, pages) {
-    if (myLibrary.length > 0) {
-        clearPage();
-        myLibrary.forEach(function() {
-            createCards();
-        });
-    } else {
-        myLibrary.forEach(function() {
-            createCards();
-            console.log('else');
-        });
-    };
+    createCard();
+    index++;
 };
-
-displayBookOnPage();
 
 //this assigns user inputs to the newBook variable
 function assignInputsToBook() {
@@ -52,6 +41,7 @@ function addBookToLibrary() {
     clear();
 };
 
+//clear stuff
 function clear() {
     document.getElementById('titleInput').value = '';
     document.getElementById('authorInput').value = '';
@@ -61,29 +51,31 @@ function clear() {
 function clearPage() {
     const container = document.getElementById('bookDisplayArea');
     container.innerHTML = '';
+    console.log('hi');
 }
 
 //To display different books, I will classify them by their array numbers.
 //for example, I will use myLibrary[0] to display the first book and so on.
 //I will create a div every time a book is added, similar to the grid project!
 
-function createCards() {
+function createCard() {
     createBookCard = document.createElement('div');
     createButton = document.createElement('button');
-    bookInfo = document.createElement('div');
     bookDisplay.appendChild(createBookCard).setAttribute("data-main", index);
     bookDisplay.appendChild(createBookCard).classList.add('bookCards');
     bookDisplay.appendChild(createBookCard).innerHTML = `${newBook.title} by ${newBook.author}, ${newBook.pages} pages long.`;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = 'deleteButton';
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
-
     deleteCards();
 }
+
 
 function deleteCards() {
     document.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
-                //console.log(myLibrary[1]);
+                
             });
         });
 };
+
+//Need to find a way to uninquely identify each card...
