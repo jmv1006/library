@@ -22,25 +22,24 @@ function Book(title, author, pages) {
     this.pages = pages
 };
 
-//swqsqaswq
-function displayBookOnPage(title, author, pages) {
-    createCard();
-    index++;
-};
-
-//this assigns user inputs to the newBook variable
+//this assigns user inputs to the newBook variable & pushes it to myLibrary
 function assignInputsToBook() {
     newBook = new Book(titleInput, authorInput, pageInput);
-    addBookToLibrary();
-};
-
-//this sends the new book to the myLibrary array 
-function addBookToLibrary() {
     myLibrary.push(newBook);
-    displayBookOnPage();
     clear();
+    displayBookOnPage();
 };
 
+//swqsqaswq
+function displayBookOnPage(title, author, pages) {
+    index++;
+    clearPage();
+    //creates a card for each book
+    for(let i=0; i < myLibrary.length; i++) {
+        console.log(i);
+        createCard();
+    };
+};
 //clear stuff
 function clear() {
     document.getElementById('titleInput').value = '';
@@ -67,7 +66,7 @@ function createCard() {
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = 'deleteButton';
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
     deleteCards();
-}
+};
 
 
 function deleteCards() {
@@ -79,3 +78,4 @@ function deleteCards() {
 };
 
 //Need to find a way to uninquely identify each card...
+//going to need to use a for loop & continue to skip over already created array elements...
