@@ -87,7 +87,7 @@ body {
     gap: 10px;
 }
 
-#deleteButton {
+.deleteButton {
     background-color: #1072A3;
     color: white;
 }
