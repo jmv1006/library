@@ -5,7 +5,9 @@ let newBook;
 let dataType;
 const bookDisplay = document.getElementById('bookDisplayArea');
 let myLibrary = [];
+//gives delete buttons an individual id
 let index = -1;
+//gives each card div an individual id different from button id
 let boxIndex = 0;
 
 //transfers user input from DOM
@@ -74,7 +76,7 @@ function deleteCards() {
     document.querySelectorAll('button').forEach(button => {
         button.addEventListener('click', function() {
                 if(button.id == 0) {
-                    //document.getElementById(1).remove();
+                    //stuff
                 };
             });
         });
