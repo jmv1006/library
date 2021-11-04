@@ -2,13 +2,11 @@ let titleInput;
 let authorInput;
 let pageInput;
 let newBook;
-let dataType;
 const bookDisplay = document.getElementById('bookDisplayArea');
+//sets up myLibrary array
 let myLibrary = [];
 //gives delete buttons an individual id
 let index = -1;
-//gives each card div an individual id different from button id
-let boxIndex = 0;
 
 //transfers user input from DOM
 function saveInputs() {
@@ -30,13 +28,12 @@ function assignInputsToBook() {
     newBook = new Book(titleInput, authorInput, pageInput);
     myLibrary.push(newBook);
     clear();
+    index++;
     displayBookOnPage();
 };
 
 //Actually loops through array and calls function that creates card
-function displayBookOnPage(title, author, pages) {
-    index++;
-    boxIndex++;
+function displayBookOnPage() {
     //creates a card for each book
     for(let i=0; i < myLibrary.length; i++) {
         if(i < myLibrary.length && myLibrary.length - i == 1)
@@ -52,22 +49,17 @@ function clear() {
     document.getElementById('pageInput').value = '';
 };
 
-//To display different books, I will classify them by their array numbers.
-//for example, I will use myLibrary[0] to display the first book and so on.
-//I will create a div every time a book is added, similar to the grid project!
-
 function createCard() {
     createBookCard = document.createElement('div');
     createButton = document.createElement('button');
     //bookDisplay.appendChild(createBookCard).setAttribute("data-main", index);
-    bookDisplay.appendChild(createBookCard).id = boxIndex;
+    //bookDisplay.appendChild(createBookCard).id = boxIndex;
     bookDisplay.appendChild(createBookCard).classList.add('bookCards');
-    bookDisplay.appendChild(createBookCard).innerHTML = `${newBook.title} by ${newBook.author}, ${newBook.pages} pages long.`;
+    bookDisplay.appendChild(createBookCard).innerHTML = `${myLibrary[index].title} by ${myLibrary[index].author}, ${myLibrary[index].pages} pages long.`;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).classList.add('deleteButton');
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = index;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
     //
-    deleteCards();
 };
 
 
@@ -76,15 +68,11 @@ function deleteCards() {
     document.querySelectorAll('button').forEach(button => {
         button.addEventListener('click', function() {
                 if(button.id == 0) {
-                    //stuff
+                    myLibrary.splice(0,1);
+                    displayBookOnPage();
                 };
             });
         });
 };
 
-
-
-
-
-//Need to find a way to uninquely identify each card...
-//going to need to use a for loop & continue to skip over already created array elements...
+deleteCards();
