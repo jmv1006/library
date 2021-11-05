@@ -8,15 +8,6 @@ let myLibrary = [];
 //a counter that allows me to assign an id to each card
 let index = -1;
 
-
-//transfers user input from DOM
-function saveInputs() {
-    titleInput = document.getElementById('titleInput').value;
-    authorInput = document.getElementById('authorInput').value;
-    pageInput = document.getElementById('pageInput').value;
-    addBookToLibrary();
-};
-
 //Object constructor
 function Book(title, author, pages) {
     this.title = title
@@ -26,6 +17,18 @@ function Book(title, author, pages) {
 
 const newbook1 = new Book('The Great Min', 'Dew Dew', 26);
 myLibrary.push(newbook1);
+const newbook2 = new Book('Moby Dick', 'Herman Melville', 789);
+myLibrary.push(newbook2);
+displayBookOnPage();
+displayBookOnPage();
+
+//transfers user input from DOM
+function saveInputs() {
+    titleInput = document.getElementById('titleInput').value;
+    authorInput = document.getElementById('authorInput').value;
+    pageInput = document.getElementById('pageInput').value;
+    addBookToLibrary();
+};
 
 //this assigns user inputs to the newBook variable & pushes it to myLibrary
 function addBookToLibrary() {
@@ -46,14 +49,7 @@ function displayBookOnPage() {
     deleteCard();
 };
 
-//clear stuff
-function clear() {
-    document.getElementById('titleInput').value = '';
-    document.getElementById('authorInput').value = '';
-    document.getElementById('pageInput').value = '';
-};
-
-
+//function that creates card for books
 function createCard() {
     index++;
     createBookCard = document.createElement('div');
@@ -65,7 +61,6 @@ function createCard() {
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = index;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
 };
-
 
 function deleteCard() {
     document.querySelectorAll('button').forEach(button => {
@@ -79,6 +74,14 @@ function deleteCard() {
         });
     });
 };
+
+//clear stuff
+function clear() {
+    document.getElementById('titleInput').value = '';
+    document.getElementById('authorInput').value = '';
+    document.getElementById('pageInput').value = '';
+};
+
 
 function clearPage() {
     bookDisplay.innerHTML = '';
