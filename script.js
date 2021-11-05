@@ -5,15 +5,16 @@ let newBook;
 const bookDisplay = document.getElementById('bookDisplayArea');
 //sets up myLibrary array
 let myLibrary = [];
-//gives delete buttons an individual id
+//a counter that allows me to assign an id to each card
 let index = -1;
+
 
 //transfers user input from DOM
 function saveInputs() {
     titleInput = document.getElementById('titleInput').value;
     authorInput = document.getElementById('authorInput').value;
     pageInput = document.getElementById('pageInput').value;
-    assignInputsToBook();
+    addBookToLibrary();
 };
 
 //Object constructor
@@ -23,12 +24,14 @@ function Book(title, author, pages) {
     this.pages = pages
 };
 
+const newbook1 = new Book('The Great Min', 'Dew Dew', 26);
+myLibrary.push(newbook1);
+
 //this assigns user inputs to the newBook variable & pushes it to myLibrary
-function assignInputsToBook() {
+function addBookToLibrary() {
     newBook = new Book(titleInput, authorInput, pageInput);
     myLibrary.push(newBook);
     clear();
-    index++;
     displayBookOnPage();
 };
 
@@ -40,6 +43,7 @@ function displayBookOnPage() {
         createCard();
         continue;
     };
+    deleteCard();
 };
 
 //clear stuff
@@ -49,30 +53,43 @@ function clear() {
     document.getElementById('pageInput').value = '';
 };
 
+
 function createCard() {
+    index++;
     createBookCard = document.createElement('div');
     createButton = document.createElement('button');
     //bookDisplay.appendChild(createBookCard).setAttribute("data-main", index);
-    //bookDisplay.appendChild(createBookCard).id = boxIndex;
     bookDisplay.appendChild(createBookCard).classList.add('bookCards');
     bookDisplay.appendChild(createBookCard).innerHTML = `${myLibrary[index].title} by ${myLibrary[index].author}, ${myLibrary[index].pages} pages long.`;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).classList.add('deleteButton');
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = index;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
-    //
 };
 
 
-
-function deleteCards() {
+function deleteCard() {
     document.querySelectorAll('button').forEach(button => {
         button.addEventListener('click', function() {
-                if(button.id == 0) {
-                    myLibrary.splice(0,1);
-                    displayBookOnPage();
-                };
-            });
+            if(button.id == 0) {
+                console.log('worked');
+                myLibrary.shift()
+                index = -1;
+                afterDelete();
+            };
         });
+    });
 };
 
-deleteCards();
+function clearPage() {
+    bookDisplay.innerHTML = '';
+};
+
+function afterDelete() {
+    displayLibros();
+};
+
+function displayLibros() {
+    myLibrary.forEach(function() {
+        createCard();
+    });
+};
