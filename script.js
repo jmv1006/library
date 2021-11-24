@@ -3,6 +3,7 @@ let authorInput;
 let pageInput;
 let newBook;
 const bookDisplay = document.getElementById('bookDisplayArea');
+
 //sets up myLibrary array
 let myLibrary = [];
 //a counter that allows me to assign an id to each card
@@ -13,8 +14,9 @@ function Book(title, author, pages) {
     this.title = title
     this.author = author
     this.pages = pages
-};
+}
 
+//Sample books
 const newbook1 = new Book('The Great Min', 'Dew Dew', 26);
 myLibrary.push(newbook1);
 const newbook2 = new Book('Moby Dick', 'Herman Melville', 789);
@@ -28,7 +30,7 @@ function saveInputs() {
     authorInput = document.getElementById('authorInput').value;
     pageInput = document.getElementById('pageInput').value;
     addBookToLibrary();
-};
+}
 
 //this assigns user inputs to the newBook variable & pushes it to myLibrary
 function addBookToLibrary() {
@@ -36,17 +38,16 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     clear();
     displayBookOnPage();
-};
+}
 
 //Actually loops through array and calls function that creates card
 function displayBookOnPage() {
     //creates a card for each book
     for(let i=0; i < myLibrary.length; i++) {
-        if(i < myLibrary.length && myLibrary.length - i == 1)
+        if(i < myLibrary.length && myLibrary.length - i == 1) {
         createCard();
-        continue;
+        };
     };
-    deleteCard();
 };
 
 //function that creates card for books
@@ -60,20 +61,23 @@ function createCard() {
     bookDisplay.appendChild(createBookCard).appendChild(createButton).classList.add('deleteButton');
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = index;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
+    //getClasses();
+
+    function getClasses() {
+        document.getElementById(index).addEventListener('click', function() {
+            console.log(this.id);
+            const position = this.id;
+            myLibrary.splice(position, 1);
+            index = -1;
+            bookDisplay.innerHTML = '';
+            myLibrary.forEach(function() {
+                createCard();
+            });
+        });
+    };
+    getClasses();
 };
 
-function deleteCard() {
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function() {
-            if(button.id == 0) {
-                console.log('worked');
-                myLibrary.shift()
-                index = -1;
-                afterDelete();
-            };
-        });
-    });
-};
 
 //clear stuff
 function clear() {
@@ -82,17 +86,3 @@ function clear() {
     document.getElementById('pageInput').value = '';
 };
 
-
-function clearPage() {
-    bookDisplay.innerHTML = '';
-};
-
-function afterDelete() {
-    displayLibros();
-};
-
-function displayLibros() {
-    myLibrary.forEach(function() {
-        createCard();
-    });
-};
