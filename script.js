@@ -17,7 +17,7 @@ function Book(title, author, pages) {
 }
 
 //Sample books
-const newbook1 = new Book('The Great Min', 'Dew Dew', 26);
+const newbook1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 152);
 myLibrary.push(newbook1);
 const newbook2 = new Book('Moby Dick', 'Herman Melville', 789);
 myLibrary.push(newbook2);
@@ -29,8 +29,13 @@ function saveInputs() {
     titleInput = document.getElementById('titleInput').value;
     authorInput = document.getElementById('authorInput').value;
     pageInput = document.getElementById('pageInput').value;
-    addBookToLibrary();
-}
+
+    if(titleInput == '' || authorInput == '' || pageInput == '' ) {
+        alert('Missing Input!');
+    } else {
+        addBookToLibrary();
+    };
+};
 
 //this assigns user inputs to the newBook variable & pushes it to myLibrary
 function addBookToLibrary() {
