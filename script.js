@@ -1,8 +1,10 @@
 let titleInput;
 let authorInput;
 let pageInput;
+let checkStatus;
 let newBook;
 const bookDisplay = document.getElementById('bookDisplayArea');
+
 
 //sets up myLibrary array
 let myLibrary = [];
@@ -10,16 +12,17 @@ let myLibrary = [];
 let index = -1;
 
 //Object constructor
-function Book(title, author, pages) {
+function Book(title, author, pages, checkStatus) {
     this.title = title
     this.author = author
     this.pages = pages
-}
+    this.checkStatus = checkStatus
+};
 
 //Sample books
-const newbook1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 152);
+const newbook1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 152, 'Read');
 myLibrary.push(newbook1);
-const newbook2 = new Book('Moby Dick', 'Herman Melville', 789);
+const newbook2 = new Book('Moby Dick', 'Herman Melville', 789, 'Not Read');
 myLibrary.push(newbook2);
 displayBookOnPage();
 displayBookOnPage();
@@ -30,6 +33,13 @@ function saveInputs() {
     authorInput = document.getElementById('authorInput').value;
     pageInput = document.getElementById('pageInput').value;
 
+    if (document.getElementById('readStatus').checked) {
+        checkStatus = 'Read';
+    } else {
+        checkStatus = 'Not Read';
+    };
+
+
     if(titleInput == '' || authorInput == '' || pageInput == '' ) {
         alert('Missing Input!');
     } else {
@@ -39,7 +49,7 @@ function saveInputs() {
 
 //this assigns user inputs to the newBook variable & pushes it to myLibrary
 function addBookToLibrary() {
-    newBook = new Book(titleInput, authorInput, pageInput);
+    newBook = new Book(titleInput, authorInput, pageInput, checkStatus);
     myLibrary.push(newBook);
     clear();
     displayBookOnPage();
@@ -60,19 +70,17 @@ function createCard() {
     index++;
     createBookCard = document.createElement('div');
     createButton = document.createElement('button');
-    //bookDisplay.appendChild(createBookCard).setAttribute("data-main", index);
     bookDisplay.appendChild(createBookCard).classList.add('bookCards');
-    bookDisplay.appendChild(createBookCard).innerHTML = `${myLibrary[index].title} by ${myLibrary[index].author}, ${myLibrary[index].pages} pages long.`;
+    bookDisplay.appendChild(createBookCard).innerHTML = `${myLibrary[index].title} by ${myLibrary[index].author}, ${myLibrary[index].pages} pages long, ${myLibrary[index].checkStatus}.`;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).classList.add('deleteButton');
     bookDisplay.appendChild(createBookCard).appendChild(createButton).id = index;
     bookDisplay.appendChild(createBookCard).appendChild(createButton).innerHTML = 'X';
-    //getClasses();
-
+    
     function getClasses() {
         document.getElementById(index).addEventListener('click', function() {
             console.log(this.id);
-            const position = this.id;
-            myLibrary.splice(position, 1);
+            const cardPosition = this.id;
+            myLibrary.splice(cardPosition, 1);
             index = -1;
             bookDisplay.innerHTML = '';
             myLibrary.forEach(function() {
