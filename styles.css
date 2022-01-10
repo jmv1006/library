@@ -90,6 +90,7 @@ body {
 .deleteButton {
     background-color: #1072A3;
     color: white;
+    cursor: pointer;
 }
 
 .footer {
