@@ -11,12 +11,14 @@ let myLibrary = [];
 //a counter that allows me to assign an id to each card
 let index = -1;
 
-//Object constructor
-function Book(title, author, pages, checkStatus) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.checkStatus = checkStatus
+//class
+class Book {
+    constructor(title, author, pages, checkStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.checkStatus = checkStatus;
+    }
 };
 
 //Sample books
@@ -26,6 +28,7 @@ const newbook2 = new Book('Moby Dick', 'Herman Melville', 789, 'Not Read');
 myLibrary.push(newbook2);
 displayBookOnPage();
 displayBookOnPage();
+
 
 //transfers user input from DOM
 function saveInputs() {
@@ -78,7 +81,6 @@ function createCard() {
     
     function getClasses() {
         document.getElementById(index).addEventListener('click', function() {
-            console.log(this.id);
             const cardPosition = this.id;
             myLibrary.splice(cardPosition, 1);
             index = -1;
